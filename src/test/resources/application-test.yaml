@@ -1,0 +1,25 @@
+server:
+  port: 0
+
+spring:
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/easycoding-db"
+    username: "postgres"
+    password: "postgres"
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      minimum-idle: 2
+      maximum-pool-size: 10
+      connection-timeout: 1000
+  jooq:
+    sql-dialect: postgres
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    default-property-inclusion: non_empty
+    deserialization:
+      #      FAIL_ON_UNKNOWN_PROPERTIES: false
+      fail-on-unknown-properties: false
+    serialization:
+      write-dates-as-timestamps: false
+  main:
+    allow-bean-definition-overriding: true

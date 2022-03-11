@@ -1,0 +1,71 @@
+server:
+  port: 8080
+  shutdown: graceful
+
+info:
+  app:
+    name: ${spring.application.name}
+    java:
+      version: ${java.version}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        exclude: shutdown
+        include: health, info, metrics, loggers # include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+spring:
+  application:
+    name: springboot-jooq-flyway-integrationtest
+  main:
+    banner-mode: off
+    allow-bean-definition-overriding: true
+  datasource:
+    url: 'jdbc:postgresql://${rds_host}:${rds_port}/${rds_dbname}'
+    username: ${rds_username}
+    password: ${rds_password}
+    driver-class-name: org.postgresql.Driver
+    tomcat:
+      max-idle: 2
+      max-active: 10
+      test-on-borrow: true
+    hikari:
+      minimum-idle: 2
+      maximum-pool-size: 10
+      connection-timeout: 1000
+    jooq:
+      sql-dialect: postgres
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: false
+    show-sql: false
+    properties.hibernate.temp.use_jdbc_metadata_defaults: false
+  flyway:
+    enabled: true
+  mvc:
+    dispatch-options-request: true
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: false
+    time-zone: ${user.timezone}
+    serialization:
+      write-dates-as-timestamps: false
+  security:
+    oauth2:
+      client:
+        registration:
+          local:
+            authorization-grant-type: client_credentials
+            client-id: easycoding
+            client-secret: my_secret
+        provider:
+          local:
+            token-uri: http://localhost:9000/oauth/token
+
+springboot-jooq-flyway-integrationtest:
+  environment: "" # mention the environment
+  url: "https://localhost:8080"

@@ -1,0 +1,8 @@
+# Properties used during development: safe defaults for local env
+
+spring:
+  datasource:
+    url: "jdbc:postgresql://localhost:15434/easycoding-db"
+    username: "postgres"
+    password: "postgres"
+    driver-class-name: org.postgresql.Driver
