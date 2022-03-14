@@ -39,11 +39,6 @@ spring:
       connection-timeout: 1000
     jooq:
       sql-dialect: postgres
-  jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    generate-ddl: false
-    show-sql: false
-    properties.hibernate.temp.use_jdbc_metadata_defaults: false
   flyway:
     enabled: true
   mvc:
