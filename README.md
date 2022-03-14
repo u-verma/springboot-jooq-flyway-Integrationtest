@@ -6,7 +6,7 @@
 
 ## Authors
 
-- [Umesh Verma] (https://github.com/u-verma)
+- [Umesh Verma](https://github.com/u-verma)
 
 
 ## Tech Stack
